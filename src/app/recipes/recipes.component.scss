@@ -1,0 +1,19 @@
+.nav-logo {
+  cursor: pointer;
+  text-decoration: none;
+  color: black;
+}
+
+.content {
+  display: flex;
+  max-height: 80vh;
+
+  .list {
+    padding: .5vw;
+    min-width: 20vw;
+  }
+
+  .container {
+    padding: 1vw;
+  }
+}

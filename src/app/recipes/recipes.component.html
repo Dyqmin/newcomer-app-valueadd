@@ -1,0 +1,11 @@
+<app-navbar>
+  <a routerLink="/" class="nav-logo">
+    Recipes app
+  </a>
+</app-navbar>
+<div class="content">
+  <app-recipes-list [recipes]="recipes$ | async" class="list"></app-recipes-list>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</div>
