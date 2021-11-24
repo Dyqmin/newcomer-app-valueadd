@@ -14,12 +14,12 @@ export class RecipesListComponent {
   @Input()
   recipes: Recipe[] | null = [];
 
-  private selectionSubject = new Subject<Recipe>();
+  private _selectionSubject$ = new Subject<Recipe>();
 
-  selection$ = this.selectionSubject.asObservable();
+  selection$ = this._selectionSubject$.asObservable();
 
-  selectionChanged(selection: MatListOption[]) {
+  selectionChanged(selection: MatListOption[]): void {
     const [selected] = selection;
-    this.selectionSubject.next(selected.value);
+    this._selectionSubject$.next(selected.value);
   }
 }

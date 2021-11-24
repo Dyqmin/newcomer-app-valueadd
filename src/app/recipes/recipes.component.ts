@@ -1,6 +1,6 @@
 import { AfterViewInit, ChangeDetectionStrategy, Component, ViewChild } from "@angular/core";
 import { Router } from "@angular/router";
-import { from, switchMap } from "rxjs";
+import { from, Observable, switchMap } from "rxjs";
 
 import { Recipe } from "./models/recipe";
 import { RecipesListComponent } from "../ui/recipes-list/recipes-list.component";
@@ -21,12 +21,12 @@ export class RecipesComponent implements AfterViewInit {
   constructor(protected router: Router, private recipesService: RecipesService) {
   }
 
-  ngAfterViewInit() {
+  ngAfterViewInit(): void {
     this.recipesListComponent.selection$.pipe(
       switchMap(this.onSelectionChanged)
     ).subscribe();
   }
 
-  onSelectionChanged = (recipeSelection: Recipe) =>
+  onSelectionChanged = (recipeSelection: Recipe): Observable<boolean> =>
     from(this.router.navigate([recipeSelection._id]))
 }

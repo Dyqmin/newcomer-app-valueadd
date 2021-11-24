@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 @Component({
   selector: 'app-recipes-list-item',
@@ -6,11 +6,5 @@ import { ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
   styleUrls: ['./recipes-list-item.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class RecipesListItemComponent implements OnInit {
-
-  constructor() { }
-
-  ngOnInit(): void {
-  }
-
+export class RecipesListItemComponent {
 }
