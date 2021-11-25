@@ -3,14 +3,14 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { RecipesComponent } from "./recipes.component";
 import { RecipeDetailsComponent } from "../ui/recipe-details/recipe-details.component";
-import { RecipeAddFormComponent } from "../ui/recipe-add-form/recipe-add-form.component";
+import { CreateRecipeFormComponent } from "../ui/create-recipe-form/create-recipe-form.component";
 
 const routes: Routes = [
   {
     path: '', component: RecipesComponent,
     children: [
       {
-        path: '', component: RecipeAddFormComponent,
+        path: '', component: CreateRecipeFormComponent,
       },
       {
         path: ':item', component: RecipeDetailsComponent

@@ -4,6 +4,8 @@ import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { RecipesModule } from "./recipes/recipes.module";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -12,6 +14,7 @@ import { RecipesModule } from "./recipes/recipes.module";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    BrowserAnimationsModule,
     RecipesModule
   ],
   providers: [],

@@ -4,7 +4,7 @@ import { from, Observable, switchMap } from "rxjs";
 
 import { Recipe } from "./models/recipe";
 import { RecipesListComponent } from "../ui/recipes-list/recipes-list.component";
-import { RecipesService } from "./services/recipes.service";
+import { HttpRecipesService } from "./services/http-recipes.service";
 
 @Component({
   selector: 'app-recipes',
@@ -16,9 +16,9 @@ export class RecipesComponent implements AfterViewInit {
 
   @ViewChild(RecipesListComponent, { static: true }) recipesListComponent!: RecipesListComponent;
 
-  recipes$ = this.recipesService.getAll();
+  recipes$ = this._recipesService.getAll();
 
-  constructor(protected router: Router, private recipesService: RecipesService) {
+  constructor(protected router: Router, private _recipesService: HttpRecipesService) {
   }
 
   ngAfterViewInit(): void {

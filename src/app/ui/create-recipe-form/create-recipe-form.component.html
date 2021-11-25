@@ -1,0 +1,43 @@
+<h2>Create recipe form</h2>
+<form [formGroup]="recipeAddForm">
+  <div class="form-fields">
+    <div class="form-column">
+      <h3>Recipe details</h3>
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Description</mat-label>
+        <input matInput formControlName="description" required>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Preparation Time In Minutes</mat-label>
+        <input matInput formControlName="preparationTimeInMinutes" required>
+      </mat-form-field>
+    </div>
+
+    <div class="form-column">
+      <h3>Ingredients</h3>
+      <app-ingredients-list></app-ingredients-list>
+      <button mat-raised-button
+              color="accent"
+              [disabled]="!areIngredientsSelected"
+              (click)="onAddIngredients()">
+        Add ingredients to recipe
+      </button>
+
+      <div formArrayName="ingredients">
+        <mat-form-field appearance="fill" *ngFor="let ingredient of ingredients.controls; let i = index">
+          <mat-label>asda</mat-label>
+          <input matInput [formControlName]="i" required>
+        </mat-form-field>
+      </div>
+
+    </div>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit">Create recipe</button>
+</form>
