@@ -1,0 +1,14 @@
+
+<form>
+  <mat-form-field appearance="fill">
+    <mat-label>Ingredient name</mat-label>
+    <input matInput [formControl]="ingredientControl" required>
+  </mat-form-field>
+
+  <button mat-raised-button
+          color="accent"
+          [disabled]="!ingredientControl.valid"
+          (click)="onSaveClick()">
+    Save ingredient
+  </button>
+</form>
