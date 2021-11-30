@@ -30,14 +30,18 @@
       </button>
 
       <div formArrayName="ingredients">
-        <mat-form-field appearance="fill" *ngFor="let ingredient of ingredients.controls; let i = index">
-          <mat-label>asda</mat-label>
-          <input matInput [formControlName]="i" required>
-        </mat-form-field>
+        <div *ngFor="let ingredient of ingredients.controls; let i = index">
+          <div [formGroupName]="i">
+            <mat-form-field appearance="fill" >
+              <mat-label>{{ingredient.value.name}} qty.</mat-label>
+              <input matInput formControlName="quantity" required>
+            </mat-form-field>
+            <button mat-mini-fab (click)="deleteIngredient(i)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </div>
       </div>
-
     </div>
   </div>
 
-  <button mat-raised-button color="primary" type="submit">Create recipe</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onSaveClick()">Create recipe</button>
 </form>
