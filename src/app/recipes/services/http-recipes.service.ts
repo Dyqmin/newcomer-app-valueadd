@@ -18,6 +18,10 @@ export class HttpRecipesService {
     return this._httpClient.post<Recipe>(`${this._apiUrl}/recipes`, recipePayload);
   }
 
+  getOne(id: string): Observable<Recipe> {
+    return this._httpClient.get<Recipe>(`${this._apiUrl}/recipes/${id}`);
+  }
+
   getAll(): Observable<Recipe[]> {
     return this._httpClient.get<Recipe[]>(`${this._apiUrl}/recipes`);
   }
