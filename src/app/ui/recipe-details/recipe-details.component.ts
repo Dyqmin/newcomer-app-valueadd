@@ -12,11 +12,9 @@ import { map, Observable } from "rxjs";
 })
 export class RecipeDetailsComponent {
 
-  recipe$: Observable<Recipe | null>
-
-  constructor(private _route: ActivatedRoute) {
-    this.recipe$ = this._route.data.pipe(
+  recipe$: Observable<Recipe | null> = this._route.data.pipe(
       map(({ recipe })=> recipe)
-    )
-  }
+  )
+
+  constructor(private _route: ActivatedRoute) {}
 }
