@@ -1,8 +1,8 @@
 import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
+import { map, Observable } from "rxjs";
 
 import { Recipe } from "../../recipes/models/recipe";
-import { map, Observable } from "rxjs";
 
 @Component({
   selector: 'app-recipe-details',
@@ -12,11 +12,10 @@ import { map, Observable } from "rxjs";
 })
 export class RecipeDetailsComponent {
 
-  recipe$: Observable<Recipe | null>
+  recipe$: Observable<Recipe | null> = this._route.data.pipe(
+    map(({ recipe }) => recipe)
+  );
 
   constructor(private _route: ActivatedRoute) {
-    this.recipe$ = this._route.data.pipe(
-      map(({ recipe })=> recipe)
-    )
   }
 }
