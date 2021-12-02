@@ -1,4 +1,14 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component, EventEmitter, Input, Output } from '@angular/core';
+
+import { Recipe } from "../../recipes/models/recipe";
+
+export enum RecipeItemEventType {
+  Details,
+  Edit,
+  Delete
+}
+
+export type RecipeItemEvent = { recipe: Recipe, event: RecipeItemEventType };
 
 @Component({
   selector: 'app-recipes-list-item',
@@ -7,4 +17,18 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class RecipesListItemComponent {
+
+  @Input() recipe!: Recipe;
+  @Output() itemEvent = new EventEmitter<RecipeItemEvent>();
+  RecipeItemEventType = RecipeItemEventType;
+
+  constructor() {
+  }
+
+  onClick(event: RecipeItemEventType) {
+    this.itemEvent.next({
+      recipe: this.recipe,
+      event: event
+    });
+  }
 }

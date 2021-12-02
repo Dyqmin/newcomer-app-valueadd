@@ -6,11 +6,12 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { RecipesListComponent } from './recipes-list/recipes-list.component';
 import { RecipesListItemComponent } from './recipes-list-item/recipes-list-item.component';
 import { RecipeDetailsComponent } from './recipe-details/recipe-details.component';
-import { CreateRecipeFormComponent } from './create-recipe-form/create-recipe-form.component';
+import { RecipeFormComponent } from './recipe-form/recipe-form.component';
 import { MaterialModule } from "../../angular-material/material.module";
 import { SnackbarService } from "./snackbar/snackbar.service";
 import { IngredientsListComponent } from './ingredients-list/ingredients-list.component';
 import { CreateIngredientFormComponent } from './create-ingredient-form/create-ingredient-form.component';
+import { DialogMessageComponent } from './dialog-message/dialog-message.component';
 
 @NgModule({
   declarations: [
@@ -18,9 +19,10 @@ import { CreateIngredientFormComponent } from './create-ingredient-form/create-i
     RecipesListComponent,
     RecipesListItemComponent,
     RecipeDetailsComponent,
-    CreateRecipeFormComponent,
+    RecipeFormComponent,
     IngredientsListComponent,
-    CreateIngredientFormComponent
+    CreateIngredientFormComponent,
+    DialogMessageComponent
   ],
   providers: [
     SnackbarService
@@ -35,7 +37,7 @@ import { CreateIngredientFormComponent } from './create-ingredient-form/create-i
     NavbarComponent,
     RecipesListComponent,
     RecipeDetailsComponent,
-    CreateRecipeFormComponent
+    RecipeFormComponent
   ]
 })
 export class UiModule { }

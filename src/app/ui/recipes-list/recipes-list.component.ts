@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, Input } from '@angular/core';
 import { Recipe } from "../../recipes/models/recipe";
 import { Subject } from "rxjs";
-import { MatListOption } from "@angular/material/list";
+import { RecipeItemEvent } from "../recipes-list-item/recipes-list-item.component";
 
 @Component({
   selector: 'app-recipes-list',
@@ -14,12 +14,11 @@ export class RecipesListComponent {
   @Input()
   recipes: Recipe[] | null = [];
 
-  private _selectionSubject$ = new Subject<Recipe>();
+  private _selectionSubject$ = new Subject<RecipeItemEvent>();
 
   selection$ = this._selectionSubject$.asObservable();
 
-  selectionChanged(selection: MatListOption[]): void {
-    const [selected] = selection;
-    this._selectionSubject$.next(selected.value);
+  onItemEvent(event: RecipeItemEvent): void {
+    this._selectionSubject$.next(event);
   }
 }

@@ -1,1 +1,11 @@
-<p>recipes-list-item works!</p>
+<div>
+  <a (click)="onClick(RecipeItemEventType.Details)">
+    {{ recipe.name }}
+  </a>
+  <button mat-icon-button (click)="onClick(RecipeItemEventType.Edit)">
+    <mat-icon>mode_edit</mat-icon>
+  </button>
+  <button mat-icon-button (click)="onClick(RecipeItemEventType.Delete)">
+    <mat-icon>delete</mat-icon>
+  </button>
+</div>
