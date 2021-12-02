@@ -1,8 +1,8 @@
 import { Inject, Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
 import {  Observable } from "rxjs";
 
 import { Recipe } from "../models/recipe";
-import { HttpClient } from "@angular/common/http";
 import { RecipePayload } from "../models/recipe-payload";
 
 @Injectable({
@@ -24,5 +24,13 @@ export class HttpRecipesService {
 
   getAll(): Observable<Recipe[]> {
     return this._httpClient.get<Recipe[]>(`${this._apiUrl}/recipes`);
+  }
+
+  delete(id: string): Observable<Recipe> {
+    return this._httpClient.delete<Recipe>(`${this._apiUrl}/recipes/${id}`)
+  }
+
+  patch(recipe: Recipe): Observable<Recipe> {
+    return this._httpClient.patch<Recipe>(`${this._apiUrl}/recipes/${recipe._id}`, recipe);
   }
 }

@@ -1,11 +1,11 @@
-<mat-selection-list [multiple]="false" (selectionChange)="selectionChanged($event.options)">
+<mat-list role="list" >
   <ng-template #noRecipes>
     No recipes found!
   </ng-template>
 
   <div *ngIf="recipes && !!recipes.length; else noRecipes" >
-    <mat-list-option *ngFor="let recipe of recipes;" [value]="recipe">
-      {{ recipe.name }}
-    </mat-list-option>
+    <mat-list-item *ngFor="let recipe of recipes;">
+      <app-recipes-list-item [recipe]="recipe" (itemEvent)="onItemEvent($event)"></app-recipes-list-item>
+    </mat-list-item>
   </div>
-</mat-selection-list>
+</mat-list>

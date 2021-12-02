@@ -1,5 +1,5 @@
-<h2>Create recipe form</h2>
-<form [formGroup]="recipeAddForm">
+<h2>{{ this.hasIdentifier ? "Edit" : "Create" }} recipe form</h2>
+<form [formGroup]="recipeFormGroup">
   <div class="form-fields">
     <div class="form-column">
       <h3>Recipe details</h3>
@@ -43,5 +43,5 @@
     </div>
   </div>
 
-  <button mat-raised-button color="primary" type="submit" (click)="onSaveClick()">Create recipe</button>
+  <button mat-raised-button color="primary" type="submit" (click)="onSaveClick()">Save</button>
 </form>
