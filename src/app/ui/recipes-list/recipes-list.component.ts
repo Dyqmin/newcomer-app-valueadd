@@ -12,7 +12,7 @@ import { RecipeItemEvent } from "../recipes-list-item/recipes-list-item.componen
 export class RecipesListComponent {
 
   @Input()
-  recipes: Recipe[] | null = [];
+  recipes: Recipe[] | null | ReadonlyArray<Recipe> = [];
 
   private _selectionSubject$ = new Subject<RecipeItemEvent>();
 

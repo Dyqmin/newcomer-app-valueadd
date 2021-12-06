@@ -2,12 +2,13 @@ import { ChangeDetectionStrategy, Component, OnDestroy, OnInit, ViewChild } from
 import { AbstractControl, FormArray, FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute } from "@angular/router";
 import { map, Observable, ReplaySubject, takeUntil, tap } from "rxjs";
+import { Store } from "@ngrx/store";
 
 import { IngredientsListComponent } from "../ingredients-list/ingredients-list.component";
 import { Ingredient } from "../../recipes/models/ingredient";
 import { RecipesIngredient } from "../../recipes/models/recipes-ingredient";
-import { HttpRecipesService } from "../../recipes/services/http-recipes.service";
 import { Recipe } from "../../recipes/models/recipe";
+import { addRecipe, updateRecipe } from "../../recipes/store/recipes.actions";
 
 @Component({
   selector: 'app-recipe-add-form',
@@ -30,7 +31,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   recipeFormChange$: Observable<Recipe> | undefined;
   private _destroyed$ = new ReplaySubject<boolean>(1);
 
-  constructor(private _fb: FormBuilder, private _httpRecipeService: HttpRecipesService, private _route: ActivatedRoute) {
+  constructor(private _fb: FormBuilder, private _route: ActivatedRoute, private _store: Store) {
   }
 
   get areIngredientsSelected(): boolean {
@@ -89,12 +90,13 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   onSaveClick(): void {
     if (this.isFormInvalid) return;
 
+    const recipe = this.recipeFormGroup.value;
     if (this.hasIdentifier) {
-      this._httpRecipeService.patch(this.recipeFormGroup.value).subscribe();
+      this._store.dispatch(updateRecipe({ _id: recipe._id, recipe: recipe }))
       return;
     }
-    this._httpRecipeService.create(this.recipeFormGroup.value).subscribe();
 
+    this._store.dispatch(addRecipe({ recipe: recipe }));
   }
 
   private createIngredientFormGroup(ingredient: Ingredient | RecipesIngredient): FormGroup {
