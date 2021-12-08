@@ -22,9 +22,6 @@ export class RecipesListItemComponent {
   @Output() itemEvent = new EventEmitter<RecipeItemEvent>();
   RecipeItemEventType = RecipeItemEventType;
 
-  constructor() {
-  }
-
   onClick(event: RecipeItemEventType) {
     this.itemEvent.next({
       recipe: this.recipe,

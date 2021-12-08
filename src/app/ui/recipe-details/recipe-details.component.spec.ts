@@ -1,4 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { of } from "rxjs";
+import { ActivatedRoute } from "@angular/router";
 
 import { RecipeDetailsComponent } from './recipe-details.component';
 
@@ -8,7 +10,10 @@ describe('RecipeDetailsComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecipeDetailsComponent ]
+      declarations: [ RecipeDetailsComponent ],
+      providers: [
+        { provide: ActivatedRoute, useValue: { data: of({})} }
+      ]
     })
     .compileComponents();
   });

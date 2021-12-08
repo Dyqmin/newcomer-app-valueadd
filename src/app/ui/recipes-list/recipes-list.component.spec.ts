@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { RecipesListComponent } from './recipes-list.component';
+import { MatDialogRef } from "@angular/material/dialog";
 
 describe('RecipesListComponent', () => {
   let component: RecipesListComponent;
@@ -8,7 +9,10 @@ describe('RecipesListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ RecipesListComponent ]
+      declarations: [ RecipesListComponent ],
+      providers: [
+        { provide: MatDialogRef, useValue: {}}
+      ]
     })
     .compileComponents();
   });
@@ -20,6 +24,8 @@ describe('RecipesListComponent', () => {
   });
 
   it('should create', () => {
-    expect(component).toBeTruthy();
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    })
   });
 });
