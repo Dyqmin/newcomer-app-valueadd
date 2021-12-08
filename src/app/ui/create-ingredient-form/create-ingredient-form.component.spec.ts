@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CreateIngredientFormComponent } from './create-ingredient-form.component';
+import { MatDialogRef } from "@angular/material/dialog";
 
 describe('CreateIngredientComponent', () => {
   let component: CreateIngredientFormComponent;
@@ -8,7 +9,10 @@ describe('CreateIngredientComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ CreateIngredientFormComponent ]
+      declarations: [ CreateIngredientFormComponent ],
+      providers: [
+        { provide: MatDialogRef, useValue: {}}
+      ]
     })
     .compileComponents();
   });

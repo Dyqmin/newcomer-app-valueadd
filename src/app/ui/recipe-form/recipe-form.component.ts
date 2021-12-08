@@ -35,7 +35,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   get areIngredientsSelected(): boolean {
-    return !!this.recipesListComponent.selectedIngredients.value.length;
+    return this.recipesListComponent.areIngredientsSelected();
   }
 
   get ingredients(): FormArray {
@@ -79,7 +79,7 @@ export class RecipeFormComponent implements OnInit, OnDestroy {
   }
 
   onAddIngredients(): void {
-    this.recipesListComponent.selectedIngredients.value
+    this.recipesListComponent.getSelectedIngredients()
       .filter((ingredient: Ingredient) => !this.isIngredientOnRecipe(ingredient))
       .map((ingredient: Ingredient) => this.createIngredientFormGroup(ingredient))
       .forEach((ingredientControl: AbstractControl) => {

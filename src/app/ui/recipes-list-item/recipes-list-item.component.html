@@ -1,6 +1,6 @@
 <div>
   <a (click)="onClick(RecipeItemEventType.Details)">
-    {{ recipe.name }}
+    {{ recipe?.name }}
   </a>
   <button mat-icon-button (click)="onClick(RecipeItemEventType.Edit)">
     <mat-icon>mode_edit</mat-icon>

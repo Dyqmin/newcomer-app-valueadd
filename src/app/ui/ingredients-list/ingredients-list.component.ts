@@ -20,6 +20,14 @@ export class IngredientsListComponent {
 
   constructor(private _httpIngredientsService: HttpIngredientsService, private _createIngredientService: CreateIngredientService) { }
 
+  getSelectedIngredients(): Ingredient[] {
+    return this.selectedIngredients.value;
+  }
+
+  areIngredientsSelected(): boolean {
+    return !!this.getSelectedIngredients().length;
+  }
+
   onCreateClick() {
     this._createIngredientService.openForm().subscribe();
   }
