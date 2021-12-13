@@ -1,0 +1,49 @@
+{
+  "compileOnSave": false,
+  "compilerOptions": {
+    "rootDir": ".",
+    "sourceMap": true,
+    "declaration": false,
+    "moduleResolution": "node",
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "importHelpers": true,
+    "target": "es2015",
+    "module": "commonjs",
+    "typeRoots": ["node_modules/@types"],
+    "lib": ["es2017", "dom"],
+    "skipLibCheck": true,
+    "skipDefaultLibCheck": true,
+    "baseUrl": ".",
+    "paths": {
+      "@newcomer-app/newcomer-app/recipe/data-access": [
+        "libs/newcomer-app/recipe/data-access/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/recipe/domain": [
+        "libs/newcomer-app/recipe/domain/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/recipe/feature": [
+        "libs/newcomer-app/recipe/feature/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/recipe/shell": [
+        "libs/newcomer-app/recipe/shell/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/recipe/ui": [
+        "libs/newcomer-app/recipe/ui/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/recipe/util": [
+        "libs/newcomer-app/recipe/util/src/index.ts"
+      ],
+      "@newcomer-app/newcomer-app/shared/config": [
+        "libs/newcomer-app/shared/config/src/index.ts"
+      ]
+    }
+  },
+  "angularCompilerOptions": {
+    "enableI18nLegacyMessageIdFormat": false,
+    "strictInjectionParameters": true,
+    "strictInputAccessModifiers": true,
+    "strictTemplates": true
+  },
+  "exclude": ["node_modules", "tmp"]
+}
